@@ -1,0 +1,74 @@
+#! /opt/iverilog/2020-07-22-5ebd08c7/bin/vvp
+:ivl_version "11.0 (devel)" "(s20150603-884-g5ebd08c7)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/opt/iverilog/2020-07-22-5ebd08c7/lib/ivl/system.vpi";
+:vpi_module "/opt/iverilog/2020-07-22-5ebd08c7/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/opt/iverilog/2020-07-22-5ebd08c7/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/opt/iverilog/2020-07-22-5ebd08c7/lib/ivl/v2005_math.vpi";
+:vpi_module "/opt/iverilog/2020-07-22-5ebd08c7/lib/ivl/va_math.vpi";
+S_0x555aae25dfb0 .scope module, "comparator" "comparator" 2 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "x";
+    .port_info 1 /INPUT 1 "y";
+    .port_info 2 /OUTPUT 1 "z";
+o0x7f30ba6500d8 .functor BUFZ 1, C4<z>; HiZ drive
+L_0x555aae2a85d0 .functor NOT 1, o0x7f30ba6500d8, C4<0>, C4<0>, C4<0>;
+o0x7f30ba650108 .functor BUFZ 1, C4<z>; HiZ drive
+L_0x555aae2a86a0 .functor NOT 1, o0x7f30ba650108, C4<0>, C4<0>, C4<0>;
+L_0x555aae2a8770 .functor AND 1, L_0x555aae2a85d0, L_0x555aae2a86a0, C4<1>, C4<1>;
+L_0x555aae2a88b0 .functor AND 1, o0x7f30ba6500d8, o0x7f30ba650108, C4<1>, C4<1>;
+L_0x555aae2a89f0 .functor OR 1, L_0x555aae2a8770, L_0x555aae2a88b0, C4<0>, C4<0>;
+v0x555aae2945e0_0 .net *"_ivl_0", 0 0, L_0x555aae2a85d0;  1 drivers
+v0x555aae2a78f0_0 .net *"_ivl_2", 0 0, L_0x555aae2a86a0;  1 drivers
+v0x555aae2a79d0_0 .net *"_ivl_4", 0 0, L_0x555aae2a8770;  1 drivers
+v0x555aae2a7a90_0 .net *"_ivl_6", 0 0, L_0x555aae2a88b0;  1 drivers
+v0x555aae2a7b70_0 .net "x", 0 0, o0x7f30ba6500d8;  0 drivers
+v0x555aae2a7c80_0 .net "y", 0 0, o0x7f30ba650108;  0 drivers
+v0x555aae2a7d40_0 .net "z", 0 0, L_0x555aae2a89f0;  1 drivers
+S_0x555aae294450 .scope module, "testbench" "testbench" 3 4;
+ .timescale -9 -12;
+v0x555aae2a8390_0 .var "x", 0 0;
+v0x555aae2a8430_0 .var "y", 0 0;
+v0x555aae2a84d0_0 .net "z", 0 0, L_0x555aae2a8b00;  1 drivers
+S_0x555aae2a7e80 .scope module, "uut" "comparator_2" 3 11, 2 11 0, S_0x555aae294450;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "x";
+    .port_info 1 /INPUT 1 "y";
+    .port_info 2 /OUTPUT 1 "z";
+v0x555aae2a80d0_0 .net "x", 0 0, v0x555aae2a8390_0;  1 drivers
+v0x555aae2a81b0_0 .net "y", 0 0, v0x555aae2a8430_0;  1 drivers
+v0x555aae2a8270_0 .net "z", 0 0, L_0x555aae2a8b00;  alias, 1 drivers
+L_0x555aae2a8b00 .cmp/ge 1, v0x555aae2a8390_0, v0x555aae2a8430_0;
+    .scope S_0x555aae294450;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x555aae2a8390_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x555aae2a8430_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x555aae2a8390_0, 0, 1;
+    %delay 10000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x555aae2a8430_0, 0, 1;
+    %delay 20000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x555aae2a8390_0, 0, 1;
+    %delay 20000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x555aae2a8430_0, 0, 1;
+    %delay 40000, 0;
+    %end;
+    .thread T_0;
+    .scope S_0x555aae294450;
+T_1 ;
+    %vpi_call 3 30 "$monitor", "x=%d,y=%d,z=%d \012", v0x555aae2a8390_0, v0x555aae2a8430_0, v0x555aae2a84d0_0 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "comparator.v";
+    "tb_2.v";
