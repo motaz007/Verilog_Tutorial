@@ -17,3 +17,14 @@ module comparator_2(
 assign z = x >= y;
 
 endmodule
+
+module comparator_3(
+    input x,
+    input y,
+    input s,
+    output z
+);
+
+assign z = (x*4+y*2+s) > 5 ;
+
+endmodule
