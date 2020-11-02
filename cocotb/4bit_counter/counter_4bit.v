@@ -16,7 +16,11 @@ begin:COUNTER
         counter_out <= counter_out + 1;
     end
     // counter_out <= count;
-
 end
-   
+`ifdef COCOTB_SIM
+   initial begin
+      $dumpfile ("waveform.vcd");
+      $dumpvars;
+      #1;
+   end
 endmodule

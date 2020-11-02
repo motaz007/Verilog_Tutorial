@@ -1,4 +1,6 @@
 *.o
+*.xml
+*.vcd
 *.out./hello_world/tb
 ./.git/hooks/fsmonitor-watchman.sample
 ./.git/hooks/update.sample
@@ -11,3 +13,5 @@
 ./.git/hooks/pre-push.sample
 ./.git/hooks/prepare-commit-msg.sample
 ./.git/hooks/pre-rebase.sample
+./cocotb/4bit_comparator/__pycashe__
+./cocotb/4bit_comparator/sim_build
