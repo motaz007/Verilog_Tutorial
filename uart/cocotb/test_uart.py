@@ -98,8 +98,6 @@ async def rx_from_data(m,r_package):
 
 
 
-
-        
 @cocotb.test()
 async def test_TX_Is_done(dut):
     """Tests that TX sets the tx_done register"""
