@@ -16,3 +16,5 @@
 
 **/cocotb/4bit_counter/__pycache__
 **/cocotb/4bit_counter/sim_build
+*.~
+*.v~
