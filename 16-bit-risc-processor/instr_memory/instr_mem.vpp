@@ -1,0 +1,46 @@
+#! /usr/bin/vvp
+:ivl_version "10.1 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x55a652c646a0 .scope module, "instr_mem_tb" "instr_mem_tb" 2 4;
+ .timescale -9 -12;
+v0x55a652c84bb0_0 .var "PCt", 15 0;
+v0x55a652c84c70_0 .net "instruction", 15 0, v0x55a652c84a70_0;  1 drivers
+S_0x55a652c64820 .scope module, "uut" "instr_mem" 2 13, 3 4 0, S_0x55a652c646a0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 16 "instruction"
+    .port_info 1 /INPUT 16 "PC"
+v0x55a652c649f0_0 .net "PC", 15 0, v0x55a652c84bb0_0;  1 drivers
+v0x55a652c84a70_0 .var "instruction", 15 0;
+E_0x55a652c2bb40 .event edge, v0x55a652c649f0_0;
+    .scope S_0x55a652c64820;
+T_0 ;
+    %wait E_0x55a652c2bb40;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_0x55a652c64820;
+T_1 ;
+    %vpi_call 3 39 "$display", "-I- VCD dump started..." {0 0 0};
+    %vpi_call 3 40 "$dumpfile", "instr_mem.vcd" {0 0 0};
+    %vpi_call 3 41 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x55a652c64820 {0 0 0};
+    %end;
+    .thread T_1;
+    .scope S_0x55a652c646a0;
+T_2 ;
+    %pushi/vec4 0, 0, 16;
+    %store/vec4 v0x55a652c84bb0_0, 0, 16;
+    %delay 1000, 0;
+    %delay 3000, 0;
+    %vpi_call 2 29 "$finish" {0 0 0};
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "instr_mem_tb.v";
+    "instr_mem.v";
