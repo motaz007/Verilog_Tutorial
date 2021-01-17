@@ -23,10 +23,15 @@ module instr_mem_tb;
 	PCt = 0;
 
 
-	#1;
+	#1 PCt = 1;
+	#1 PCt = 2;
+	#1 PCt = 3;
+	#1 PCt = 4;
+	#1 PCt = 5;
 
 	
-	#3 $finish;
+	
+	#5 $finish;
      end // initial begin
 
 
