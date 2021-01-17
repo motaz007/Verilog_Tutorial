@@ -36,26 +36,26 @@ module instr_mem (/*AUTOARG*/
 	 $display("data_file handle was NULL");
 	 $finish;
       end
-      // while(!$feof(data_file)) begin
-      //    scan_file = $fscanf(data_file, "%b\n", captured_data); 
-      // 	 memory[i] = captured_data;
-      // 	 $display("memory = %b",memory[i]);
+      while(!$feof(data_file)) begin
+         scan_file = $fscanf(data_file, "%b\n", captured_data); 
+      	 memory[i] = captured_data;
+      	 $display("memory = %b",memory[i]);
 	 
-      // 	 i = i + 1;
+      	 i = i + 1;
 	 
-      // end
+      end
       
    end
 
    always @(PC) begin
-      	 scan_file = $fscanf(data_file, "%b\n", captured_data); 
+      	 //scan_file = $fscanf(data_file, "%b\n", captured_data); 
       
-      if (scan_file) begin
-	 // instruction = memory[0]; 
-	 instruction = captured_data;
+      //if (scan_file) begin
+	 instruction = memory[PC]; 
+	 //instruction = captured_data;
 	 
    	 //use captured_data as you would any other wire or reg value;
-      end
+      //end
    end
    
    // always @ (PC) 
