@@ -14,10 +14,9 @@ module instr_mem (/*AUTOARG*/
    output [15:0] instruction;
 
    //------------Internal Veriables-----------
-   reg [15:0] 	 memory [3:0];
+   //reg [15:0] 	 memory [3:0];
    reg [15:0] 	 instruction_in;
    reg [15:0] 	 instruction_addrs;
-   wire [15:0] 	 data_ram;
    
  		 
    /*AUTOINPUT*/
@@ -62,8 +61,8 @@ module instr_mem (/*AUTOARG*/
          scan_file = $fscanf(data_file, "%b\n", captured_data);
       	 instruction_in <= captured_data;
 	 instruction_addrs <= i;
-	 memory[i] <= captured_data;
-      	 $display("memory = %b",memory[i-1]);
+	 //memory[i] <= captured_data;
+      	 //$display("memory = %b",memory[i-1]);
 	 
       	 i = i + 1;
 	 
